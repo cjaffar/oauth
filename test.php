@@ -6,6 +6,7 @@ define('OAUTH2_CLIENT_SECRET', '4687d07e489af18ce294437503a829e853cc9c90');
 define('APP_NAME','TESTER sf APP');
 
 $authorizeURL = 'https://github.com/login/oauth/authorize';
+
 $tokenURL = 'https://github.com/login/oauth/access_token';
 $apiURLBase = 'https://api.github.com';
 
@@ -15,3 +16,8 @@ $apiURLBase = 'https://api.github.com';
     'scope' => 'user',
     // 'state' => $_SESSION['state']
   ];
+
+  print_r($params);
+
+  header('Location: ' . $authorizeURL . '?' . http_build_query($params));
+  exit('HELLO WORLD');
