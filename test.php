@@ -1,5 +1,7 @@
 <?php session_start();
 
+ini_set('display_errors', 1);
+
 define('OAUTH2_CLIENT_ID', '9842fa9325a317c39003');
 define('OAUTH2_CLIENT_SECRET', '4687d07e489af18ce294437503a829e853cc9c90');
 
