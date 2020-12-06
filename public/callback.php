@@ -12,3 +12,5 @@ elseif(isset($_GET['token'])) :
 	$_SESSION['git_token'] = $_GET['token'];
 
 endif;
+
+redirect('/');
