@@ -7,9 +7,9 @@ if(isset($_GET['error_description'])) :
 
 	$_SESSION['git_error'] = $_GET['error_description'];
 
-elseif(isset($_GET['token'])) :
+elseif(isset($_GET['code'])) :
 
-	$_SESSION['git_token'] = $_GET['token'];
+	$_SESSION['git_token'] = $_GET['code'];
 
 endif;
 
