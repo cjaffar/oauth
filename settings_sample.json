@@ -1,0 +1,7 @@
+{
+	"OAUTH2_CLIENT_ID": "",
+	"OAUTH2_CLIENT_SECRET":"",
+	"AUTHORIZE_URL" :"https://github.com/login/oauth/authorize",
+	"TOKEN_URL":"https://github.com/login/oauth/access_token",
+	"ENDPOINT_BASEURL":"https://api.github.com"
+}
