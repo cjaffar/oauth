@@ -1,4 +1,4 @@
-<?php require_once( dirname(__FILE__) . '/BaseController.php' );
+<?php namespace Swordfish\controllers;
 
 class HomeController extends BaseController {
 
@@ -38,7 +38,11 @@ class HomeController extends BaseController {
 		switch($this->action) :
 
 			case 'auth' :
-				$method = $this->do_auth();
+				$method = $this->doAuth();
+				break;
+
+			case 'token' :
+				$method = $this->processToken();
 				break;
 
 			default :
@@ -51,17 +55,37 @@ class HomeController extends BaseController {
 
 	}
 
-	public function do_auth() {
+	public function processToken() {
+
+		$params = [
+			'client_id' => OAUTH2_CLIENT_ID,
+			'client_secret' => OAUTH2_CLIENT_SECRET,
+			'code' => $this->getParam('code')
+		];
+
+		$resp = $this->performPost(TOKEN_URL, $params);
+		var_dump($resp);
+
+	}
+
+	/**
+	*
+	* @see for documentation on authorizing with github.  https://docs.github.com/en/free-pro-team@latest/developers/apps/authorizing-oauth-apps#web-application-flow
+	*/
+	public function doAuth() {
 	  
+	  $state = $_SESSION['state'] = md5( uniqid() );
+
 	  $params = [
 	    'client_id' => OAUTH2_CLIENT_ID,
 	    'redirect_uri' => 'http://' . $_SERVER['SERVER_NAME'] . '/callback.php',
-	    'scope' => 'user',
-	    // 'state' => $_SESSION['state']
+	    'scope' => 'user,repo',
+	    'state' => $state,
+	    'allow_signup' => false
 	  ];
 
 	 header('Location: ' . AUTHORIZE_URL . '?' . http_build_query($params));
-	 exit;
+	 return;
 	}
 
 }

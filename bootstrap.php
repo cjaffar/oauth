@@ -13,6 +13,7 @@ $settings = json_decode( file_get_contents(SETTINGS_PATH), true);
 
 define('AUTHORIZE_URL', isset($settings['AUTHORIZE_URL']) ? $settings['AUTHORIZE_URL'] : '' );
 define('TOKEN_URL', isset($settings['TOKEN_URL']) ? $settings['TOKEN_URL'] : '' );
+
 define('ENDPOINT_BASEURL', isset($settings['ENDPOINT_BASEURL']) ? $settings['ENDPOINT_BASEURL'] : '' );
 
 define('OAUTH2_CLIENT_ID', isset($settings['OAUTH2_CLIENT_ID']) ? $settings['OAUTH2_CLIENT_ID'] : '' );

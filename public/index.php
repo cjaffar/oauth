@@ -2,7 +2,10 @@
 
 require_once( dirname(__DIR__) . '/bootstrap.php');
 
-$ctrl = new HomeController;
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+
+$ctrl = new \Swordfish\controllers\HomeController;
+$ctrl->setAction($action);
 $ctrl->displayPage();
 
 
