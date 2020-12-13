@@ -31,8 +31,8 @@ class BaseController {
 				->body( $post )
 				->send();
 
-			$result['content'] = $response->getBody();
-
+			$result['content'] = $response->body;
+//echo '<pre>'; print_r($result); exit;
 		} catch(\Exception $ex) {
 
 			$result['error'] = $ex->getMessage();
