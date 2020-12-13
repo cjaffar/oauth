@@ -28,13 +28,15 @@ class BaseController {
 
 		try {
 
-			if(!isset($_SESSION['git_token'])) {
-				throw new \Exception('Oops, invalid or expired session. Please re-auth.');
-			}
-
 			if($withAuth) {
+
+				if(!isset($_SESSION['git_token'])) {
+					throw new \Exception('Oops, invalid or expired session. Please re-auth.');
+				}
+				
 				$headers[] = "Authorization: token {$_SESSION['git_token']}";
 				$headers[] = "Accept: application/vnd.github.v3+json";
+				$headers[] = "User-Agent: GITHUB_REPO_NAME";
 			}
 
 			$response = Request::post($url)
