@@ -38,7 +38,7 @@ class BaseController {
 			}
 
 			$response = Request::post($url)
-				->sendsJson()
+				// ->sendsJson()
 				->body( $post );
 
 			if($headers) {
@@ -48,6 +48,8 @@ class BaseController {
 			$response = $response->send();
 
 			$result['content'] = $response->body;
+			var_dump($headers);
+			var_dump($url);
 
 		} catch(\Exception $ex) {
 
