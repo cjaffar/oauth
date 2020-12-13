@@ -21,15 +21,20 @@ class BaseController {
 	/**
 	*
 	*/
-	public function performPost(String $url, array $post): array {
+	public function performPost(String $url, array $post, array $headers = []): array {
 
 		$result = ['error' => false ];
 		try {
 
 			$response = Request::post($url)
 				->sendsJson()
-				->body( $post )
-				->send();
+				->body( $post );
+
+			if($headers) {
+				$response = $response->addHeaders( $headers );
+			}
+
+			$response = $response->send();
 
 			$result['content'] = $response->body;
 //echo '<pre>'; print_r($result); exit;

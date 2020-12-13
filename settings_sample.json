@@ -3,5 +3,7 @@
 	"OAUTH2_CLIENT_SECRET":"",
 	"AUTHORIZE_URL" :"https://github.com/login/oauth/authorize",
 	"TOKEN_URL":"https://github.com/login/oauth/access_token",
-	"ENDPOINT_BASEURL":"https://api.github.com"
+	"ENDPOINT_BASEURL":"https://api.github.com/",
+	"GITHUB_REPO_OWNER" : "Swordfish1Code",
+	"GITHUB_REPO_NAME" : "GitIntegrat1ion"
 }
