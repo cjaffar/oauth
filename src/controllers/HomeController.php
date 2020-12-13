@@ -66,7 +66,7 @@ class HomeController extends BaseController {
 
 
 		if(isset($resp['content']['access_token'])) {
-			$_SESSION['git_token'] = $resp['access_token'];
+			$_SESSION['git_token'] = $resp['content']['access_token'];
 			return true;
 		} else if( isset($resp['content']['error']) ) {
 			$_SESSION['git_error'] = $resp['content']['error_description'];
