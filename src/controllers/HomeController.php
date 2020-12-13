@@ -15,14 +15,14 @@ class HomeController extends BaseController {
 
 		if(isset($_SESSION['git_error'])) {
 			$data['page_label'] =  $_SESSION['git_error'];
-			unset($_SESSION['git_error']);
 		}
 
 		if(isset($_SESSION['git_token'])) {
 			$data['authorized'] =  true;
 			$data['page_label'] = 'You have been successfully authorized to use this App.';
-			unset($_SESSION['git_error']);
 		}
+
+		unset($_SESSION['git_error']);
 
 		foreach($data as $k => $v) {
 			$$k = $v;
@@ -90,7 +90,7 @@ class HomeController extends BaseController {
 	  ];
 
 	 header('Location: ' . AUTHORIZE_URL . '?' . http_build_query($params));
-	 return;
+	 // return;
 	}
 
 }
