@@ -35,12 +35,17 @@ class BaseController {
 				}
 				
 				$headers[] = "Authorization: token {$_SESSION['git_token']}";
-				$headers[] = "Accept: application/vnd.github.v3+json";
-				$headers[] = "User-Agent: GITHUB_REPO_NAME";
+				$headers[] = "Accept: application/vnd.github.v3+json, application/vnd.github.machine-man-preview";
+				$headers[] = "User-Agent: ". GITHUB_REPO_NAME;
+
+$headers['accept'] =  'application/vnd.github.v3+json, application/vnd.github.machine-man-preview';
+//$post = array_merge($post, $headers);
+
 			}
 
 			$response = Request::post($url)
-				// ->sendsJson()
+				->withoutStrictSSL()
+				->sendsJson()
 				->body( $post );
 
 			if($headers) {
@@ -48,10 +53,8 @@ class BaseController {
 			}
 
 			$response = $response->send();
-
+d($response);
 			$result['content'] = $response->body;
-			var_dump($headers);
-			var_dump($url);
 
 		} catch(\Exception $ex) {
 
