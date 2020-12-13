@@ -18,10 +18,9 @@ elseif(isset($_GET['code'])) :
 
 	}
 
-	if(!isset($_SERVER['git_token'])) {
-		$_SESSION['git_error'] = "Invalid git code encountered, App not Authorized.";
-	}
-
+	// if(!isset($_SERVER['git_token'])) {
+	// 	$_SESSION['git_error'] = "Invalid git code encountered, App not Authorized.";
+	// }
 endif;
 
 redirect('/');
