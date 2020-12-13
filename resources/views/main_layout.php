@@ -78,7 +78,14 @@
                             <p><?php echo $page_label; ?></p>
                             <hr>
 
-                            <?php if(!$authorized) : ?>
+                            <?php if($authorized) : ?>
+                              <a href="/issues.php?action=list" class="btn btn-round btn-md btn-outline-dark mx-2 mx-lg-3 mb-0">
+                                Get Issues
+                              </a>
+                              <a href="/issues.php?action=add" class="btn btn-round btn-md btn-outline-dark mx-2 mx-lg-3 mb-0">
+                                Create Issue
+                              </a>
+                            <?php else: ?>
                               <a href="/?action=auth" class="btn btn-round btn-lg btn-outline-dark mx-2 mx-lg-3 mb-0">Authorize App</a>
                             <?php endif; ?>
 

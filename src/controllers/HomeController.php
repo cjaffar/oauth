@@ -67,9 +67,8 @@ class HomeController extends BaseController {
 
 		if(isset($resp['content']['access_token'])) {
 			$_SESSION['git_token'] = $resp['access_token'];
-			return true;
 		} else if( isset($resp['content']['error']) ) {
-			$_SESSION['git_error'] = $resp['content']['error_description'];
+			$_SESSION['git_error'] = 'Github error encountered: ' . $resp['content']['error_description'];
 		} else {
 			$_SESSION['git_error'] = 'Unsuccessful getting authorization from Github.';
 		}
