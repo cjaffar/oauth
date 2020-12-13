@@ -90,7 +90,7 @@ class HomeController extends BaseController {
 	  ];
 
 	 header('Location: ' . AUTHORIZE_URL . '?' . http_build_query($params));
-	 // return;
+	 exit;
 	}
 
 }
