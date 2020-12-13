@@ -19,6 +19,9 @@ define('ENDPOINT_BASEURL', isset($settings['ENDPOINT_BASEURL']) ? $settings['END
 define('OAUTH2_CLIENT_ID', isset($settings['OAUTH2_CLIENT_ID']) ? $settings['OAUTH2_CLIENT_ID'] : '' );
 define('OAUTH2_CLIENT_SECRET', isset($settings['OAUTH2_CLIENT_SECRET']) ? $settings['OAUTH2_CLIENT_SECRET'] : '' );
 
+define('GITHUB_REPO_OWNER', isset($settings['GITHUB_REPO_OWNER']) ? $settings['GITHUB_REPO_OWNER'] : '' );
+define('GITHUB_REPO_NAME', isset($settings['GITHUB_REPO_NAME']) ? $settings['GITHUB_REPO_NAME'] : '' );
+
 
 
 

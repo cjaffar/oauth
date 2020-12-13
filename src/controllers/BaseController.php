@@ -21,10 +21,21 @@ class BaseController {
 	/**
 	*
 	*/
-	public function performPost(String $url, array $post, array $headers = []): array {
+	public function performPost(String $url, array $post, array $headers = [], bool $withAuth = null): array {
 
 		$result = ['error' => false ];
+		$headers = [];
+
 		try {
+
+			if(!isset($_SESSION['git_token'])) {
+				throw new \Exception('Oops, invalid or expired session. Please re-auth.');
+			}
+
+			if($withAuth) {
+				$headers[] = "Authorization: token {$_SESSION['git_token']}";
+				$headers[] = "Accept: application/vnd.github.v3+json";
+			}
 
 			$response = Request::post($url)
 				->sendsJson()
@@ -37,7 +48,7 @@ class BaseController {
 			$response = $response->send();
 
 			$result['content'] = $response->body;
-//echo '<pre>'; print_r($result); exit;
+
 		} catch(\Exception $ex) {
 
 			$result['error'] = $ex->getMessage();
