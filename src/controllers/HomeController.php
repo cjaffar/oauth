@@ -52,7 +52,6 @@ class HomeController extends BaseController {
 		endswitch;
 
 		return $method;
-
 	}
 
 	public function processToken() {
@@ -66,10 +65,12 @@ class HomeController extends BaseController {
 		$resp = $this->performPost(TOKEN_URL, $params);
 		if(isset($resp['access_token'])) {
 			$_SESSION['git_token'] = $resp['access_token'];
+			exit;
 			return true;
 		}
 
 		$_SESSION['git_error'] = 'Unsuccessful getting authorization from Github.';
+		exit;
 		return false;
 	}
 
