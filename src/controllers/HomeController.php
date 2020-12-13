@@ -64,8 +64,13 @@ class HomeController extends BaseController {
 		];
 
 		$resp = $this->performPost(TOKEN_URL, $params);
-		var_dump($resp);
+		if(isset($resp['access_token'])) {
+			$_SESSION['git_token'] = $resp['access_token'];
+			return true;
+		}
 
+		$_SESSION['git_error'] = 'Unsuccessful getting authorization from Github.';
+		return false;
 	}
 
 	/**
